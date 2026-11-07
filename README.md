@@ -7,6 +7,8 @@ FastAPI backend runs **your** `diamond_price_ann.keras` and returns the price in
 - **Backend:** FastAPI, TensorFlow/Keras, scikit-learn, pandas, NumPy, joblib
 - No retraining happens anywhere. Scalers are only ever `transform`-ed, never refitted.
 
+Deployed Project URL: https://facet-diamond-price-prediction.vercel.app/
+
 ```
 Diamond-Price-Prediction/
 ├── backend/
