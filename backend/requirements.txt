@@ -1,0 +1,16 @@
+# Versions below are the ones this project was built and tested with.
+fastapi==0.162.0
+uvicorn==0.54.0
+pydantic==2.14.3
+pydantic-settings==2.16.2
+httpx==0.28.1
+python-dotenv==1.2.4
+
+# ML stack. scikit-learn MUST stay at 1.6.1: the scalers were pickled with it.
+# If tensorflow-cpu has no wheel for your platform, use `tensorflow==2.21.0` instead.
+tensorflow-cpu==2.21.0
+keras==3.15.1
+scikit-learn==1.6.1
+numpy==2.5.4
+pandas==3.0.6
+joblib==1.6.0

@@ -1,0 +1,7 @@
+{
+  "train_r2": 0.9820,
+  "test_r2": 0.9811,
+  "mae": 296.13,
+  "rmse": 547.99,
+  "source": "Reported by the model author on the held-out test set"
+}

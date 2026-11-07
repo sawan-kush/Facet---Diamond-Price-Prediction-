@@ -1,0 +1,103 @@
+@import "@fontsource-variable/newsreader/opsz.css";
+@import "@fontsource-variable/geist";
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ---- Design tokens ------------------------------------------------------
+   Charcoal / off-white / silver with a restrained champagne accent.
+   Light is the default; .dark overrides. */
+:root {
+  --bg: #f4f4f2;
+  --surface: #ffffff;
+  --surface-2: #ebebe8;
+  --ink: #1b1c1e;
+  --ink-2: #5a5e64;
+  --line: #dcdcd8;
+  --line-strong: #b9bbbe;
+  --accent: #8f7439;           /* champagne, darkened for contrast on paper */
+  --accent-soft: #c9ae76;
+  --danger: #a3392f;
+  --ok: #3f7a5a;
+  --warn: #8a6a1f;
+  color-scheme: light;
+}
+.dark {
+  --bg: #17181a;
+  --surface: #1f2123;
+  --surface-2: #26282b;
+  --ink: #f1f1ee;
+  --ink-2: #9a9ea5;
+  --line: #2f3236;
+  --line-strong: #494d52;
+  --accent: #c9ae76;
+  --accent-soft: #c9ae76;
+  --danger: #e0877d;
+  --ok: #86c4a1;
+  --warn: #d4b36a;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent: var(--accent);
+  --color-danger: var(--danger);
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Newsreader Variable", "Iowan Old Style", Georgia, "Times New Roman", serif;
+}
+
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+::selection { background: var(--accent-soft); color: #1b1c1e; }
+
+.display {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-variation-settings: "opsz" 72;
+  letter-spacing: -0.022em;
+  line-height: 1.04;
+}
+.serif-num {
+  font-family: var(--font-serif);
+  font-weight: 300;
+  font-variant-numeric: lining-nums tabular-nums;
+  letter-spacing: -0.02em;
+}
+.tnum { font-variant-numeric: tabular-nums; }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+/* Result reveal: answers a user action (the Predict button), so it earns motion. */
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(10px); clip-path: inset(0 0 14% 0); }
+  to   { opacity: 1; transform: none; clip-path: inset(0 0 0 0); }
+}
+.reveal { animation: reveal 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+
+@keyframes shimmer { to { background-position: -200% 0; } }
+.shimmer {
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--line) 50%, var(--surface-2) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.spin { animation: spin 0.8s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .shimmer, .spin { animation: none; }
+}
